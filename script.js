@@ -33,15 +33,12 @@ myTimerEl.textContent = time;
 
 console.log (time)
 
-getQuestion ();
 
-function getQuestion() {
+function getQuestion() 
+questionsListEl.children[0].textContent = myQuestions.title;
+while (myChoicesEl.hasChildNodes()) {
+myChoicesEl.removeChild(myChoicesEl.lastChild);
 }
-    var questions = questions[myQuestions];
-    questionsListEl.children[0].textContent = myQuestions.title;
-    while (myChoicesEl.hasChildNodes()) {
-    }
-        myChoicesEl.removeChild(myChoicesEl.lastChild);
     
 
 
@@ -77,7 +74,7 @@ function getQuestion() {
 function questionsClick(answerChoice) {
     if (answerChoice.textContent != questions[myQuestions].answer){
 // penalize time
-    time-=20;
+    time-=10;
 // display new time on page (should work)
     MyFeedbackEl.textContent = "Incorrect";
     }
@@ -91,7 +88,7 @@ function questionsClick(answerChoice) {
  myFeedbackEl.setAttribute("class", "feedback");
  setInterval(function(){
    myFeedbackEl.setAttribute("class", "feedback hide");
- }, 100);
+ }, 1000);
 
  // move to next question
  myQuestions++;
@@ -120,7 +117,7 @@ function quizEnd() {
  finalScoreEl.textContent = time;
 
  // hide questions 
- myquestionsEl.setAttribute("class", "hide");
+ myQuestionsEl.setAttribute("class", "hide");
 }
 
 function clockTick() {
