@@ -1,5 +1,5 @@
 * {
-    background-color: darksalmon;
+    background-color: slateblue;
 }
 
 body {
@@ -8,7 +8,38 @@ body {
 }
 
 a {
-    color:crimson;
+    color:white;
     text-decoration: darkgrey;
     transition: color cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+a:hover {
+    color:thistle;
+}
+
+button {
+    display:inline-flex;
+    margin:2px;
+    cursor: pointer;
+    font-size: 80%;
+    background-color: thistle;
+    border-radius: 4px;
+    padding: 3px 10px;
+    color:teal;
+    border: 0;
+    transition: background-color 0.1s;
+}
+
+button:hover {
+    background-color: white;
+}
+
+.choices button {
+display: block;
+}
+
+ol {
+    padding-right: 0px;
+    max-height:400px;
+    overflow:auto;
 }
