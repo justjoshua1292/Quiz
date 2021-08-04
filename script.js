@@ -1,6 +1,6 @@
 // List of my variables
 var myQuestions = 0;
-var time = questions.length * 30;
+var time = questions.length * git 30;
 var timerLock;
 
 
