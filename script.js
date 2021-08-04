@@ -44,9 +44,37 @@ function getQuestion() {
     }
 
 
-    // Loops
+    // Loop over selected choices
 
     for (var i=0; i <currentQuestion.myChoicesEl.length; i++) {
 
+    //    creating new buttons for each choice
+        var choiceButton = document.createElement("button");
+        choiceButton.textContent = currentQuestion.choices[i];
+
+        // Place display on page
+        myChoicesEl.appendChild(choiceButton);
     }
+
+
+    // Adding event listeners to each choice
+    myChoicesEl.children[0].addEventListener("click", function(event) {
+    questionsClick(myChoicesEl.children[0]);
+    });
+    myChoicesEl.children[1].addEventListener("click", function(event) {
+     questionsClick(myChoicesEl.children[1]);
+    });
+    myChoicesEl.children[2].addEventListener("click", function(event) {
+    questionsClick(myChoicesEl.children[2]);
+    });
+    myChoicesEl.children[3].addEventListener("click", function(event) {
+    questionsClick(myChoicesEl.children[3]);
+    });
+
+
+
+
 }
+
+
+
