@@ -8,6 +8,9 @@ for (let index = 0; index < highscores.length; index++) {
 }
 
 function clearHighscores () {
-localStorage.clear ();
-location.reload ();
+    localStorage.clear ();
+    location.reload ();
 }
+
+var deleteeverythingButton = document.getElementById("clearBtn");
+deleteeverythingButton.addEventListener("click", clearHighscores);
