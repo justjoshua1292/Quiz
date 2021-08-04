@@ -1,4 +1,4 @@
-var MyListOfQuestions = [
+var Questions = [
     {
         title: "Which property is used to change the background color? : ",
         choices: ["bgcolor", "color", "background-color"],
