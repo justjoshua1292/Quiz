@@ -43,3 +43,21 @@ ol {
     max-height:400px;
     overflow:auto;
 }
+
+input[type="text"] {
+    font-size: 100%;
+}
+
+.wrapper {
+    margin:100px auto 0 auto;
+    max-width: 600px;
+}
+
+li {
+    padding:10px;
+    list-style: decimal inside none;
+}
+
+.hide {
+    display: none;
+}
