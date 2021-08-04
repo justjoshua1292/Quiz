@@ -26,7 +26,7 @@ questionsListEl.setAttribute("class", " ");
 // start of timer
 timerLock= setInterval(function(){
     clockTick();
-}, 100);
+}, 1000);
 
 // show start time
 myTimerEl.textContent = time;
@@ -34,7 +34,6 @@ myTimerEl.textContent = time;
 console.log (time)
 
 
-function getQuestion() 
 questionsListEl.children[0].textContent = myQuestions.title;
 while (myChoicesEl.hasChildNodes()) {
 myChoicesEl.removeChild(myChoicesEl.lastChild);
@@ -105,7 +104,7 @@ function questionsClick(answerChoice) {
 
 function quizEnd() {
  // stop timer
- clearInterval(timerId);
+ clearInterval(mytimerLock);
  myTimerEl.textContent = time;
 
  // show end screen
