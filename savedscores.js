@@ -6,3 +6,8 @@ for (let index = 0; index < highscores.length; index++) {
     newestlist.textContent=highscores[index].initals+" - " + highscores[index].score
     scorelist.appendChild(newestlist)
 }
+
+function clearHighscores () {
+localStorage.clear ();
+location.reload ();
+}
