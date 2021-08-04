@@ -3,8 +3,6 @@
 var myQuestions = 0;
 var timing = questions.length *30;
 var timerLock;
-var sfxCorrect = new Audio ("");
-var sfxIncorrect = new Audio ("");
 
 
 
@@ -37,7 +35,6 @@ mytimerEl.textContent = time;
 console.log (time)
 
 getQuestion ();
-}
 
 function getQuestion() {
     var questions = questions[myQuestions];
@@ -50,6 +47,6 @@ function getQuestion() {
     // Loops
 
     for (var i=0; i <currentQuestion.myChoicesEl.length; i++) {
-        
+
     }
 }
