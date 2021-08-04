@@ -88,7 +88,7 @@ function questionsClick(answerChoice) {
     }
 }
 
- // flash right/wrong feedback on page for half a second
+ // flash right/wrong feedback on page 
  myFeedbackEl.setAttribute("class", "feedback");
  setInterval(function(){
    myFeedbackEl.setAttribute("class", "feedback hide");
@@ -97,7 +97,7 @@ function questionsClick(answerChoice) {
  // move to next question
  myQuestions++;
 
- // check if we've run out of questions
+ // check to see if we've run out of questions
  if(myQuestions === questions.length)
    // quizEnd
    quizEnd();
@@ -116,21 +116,65 @@ function quizEnd() {
  var endScreenEl = document.getElementById("end-screen");
  endScreenEl.setAttribute("class", " ");
 
- // show final score
+ // show final score when complete
  var finalScoreEl = document.getElementById("final-score");
  finalScoreEl.textContent = time;
 
- // hide questions section
+ // hide questions 
  questionsEl.setAttribute("class", "hide");
 }
 
 function clockTick() {
- // update time
+ // update the time
  time--;
  timerEl.textContent = time;
 
- // check if user ran out of time
+ // check if user ran out of time during quiz
  if(time <= 0)
    quizEnd();
  
 }
+
+function saveScores () {
+    var namesIntials = namesInitals.value.toUpperCase ();
+    if (namesInitals === "") {
+        alert("Blank input not allowed");
+        return;
+    }
+    else if (namesInitals.length > 3){
+        alert("Input has to be less than 10 characters");
+        return;
+
+    // get saved scores from localstorage, or if not any, set to empty array
+    var highscores;
+    if(JSON.parse(localStorage.getItem("highscores")) != null)
+      highscores = JSON.parse(window.localStorage.getItem("highscores"));
+    else
+      highscores = [];
+    // format new score object for current user
+    var newestScores = {
+      initials: initials,
+      score: time
+    };
+    highscores.push(newestScores);
+    // save to localstorage
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+    // redirect to next page
+    location.href = "savedscores.html";
+  }
+}
+
+function checkForEnter(event) {
+  // check if event key is enter
+    // saveHighscore
+    if(event.keyCode === 13)
+      saveHighscore();
+}
+
+// user clicks button to submit initials
+submitBtn.onclick = saveHighscore;
+
+// user clicks button to start quiz
+startBtn.onclick = startQuiz;
+
+initialsEl.onkeyup = checkForEnter;
