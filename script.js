@@ -11,7 +11,7 @@ var myTimerEl= document.getElementById("time");
 var myChoicesEl = document.getElementById("choices");
 var mySubmitBtn = document.getElementById("submit");
 var myInitalsEl = document.getElementById("names-initals");
-var startBtn = document.getElementById("start");
+var myStartBtn = document.getElementById("start-on");
 var myFeedbackEl = document.getElementById("feedback");
 
 function startQuiz () {
@@ -20,7 +20,7 @@ function startQuiz () {
 
 var readyScreen = document.getElementById("start-up");
 readyScreen.setAttribute("class", "start hide"); }
-
+myStartBtn.onclick = startQuiz;
 // Reveal questions
 questionsListEl.setAttribute("class", " ");
 // start of timer
@@ -43,7 +43,7 @@ myChoicesEl.removeChild(myChoicesEl.lastChild);
 
     // Loop over selected choices
 
-    for (var i=0; i <myQuestions.myChoicesEl.length; i++) {
+    for (var i=0; i <questionsListEl.myChoicesEl.length; i++) {
     }
 
     //    creating new buttons for each choice
@@ -169,7 +169,5 @@ function checkForEnter(event) {
 // user clicks button to submit initials
 mySubmitBtn.onclick = saveHighscore;
 
-// user clicks button to start quiz
-myStartBtn.onclick = startQuiz;
 
 myInitialsEl.onkeyup = checkForEnter;
