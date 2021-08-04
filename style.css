@@ -61,3 +61,31 @@ li {
 .hide {
     display: none;
 }
+
+.scores {
+    position:absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.start {
+    text-align: center;
+}
+
+.timer {
+    position:absolute;
+    top: 10px;
+    right:10px;
+}
+
+.feedback {
+    font-style: bold;
+    margin-top: 20px;
+    padding-top: 10px;
+    color:gray;
+    border-top: 3px solid
+}
+
+li:nth-child(odd) {
+    background-color: thistle;
+}
