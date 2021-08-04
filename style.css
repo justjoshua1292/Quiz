@@ -1,0 +1,14 @@
+* {
+    background-color: darksalmon;
+}
+
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%
+}
+
+a {
+    color:crimson;
+    text-decoration: darkgrey;
+    transition: color cubic-bezier(0.23, 1, 0.320, 1);
+}
