@@ -71,10 +71,9 @@ function getQuestion() {
     questionsClick(myChoicesEl.children[3]);
     });
 
+    function questionClick (answerChoice) {
+// if wrong answer was logged
 
-
-
-}
-
-
-
+if (answerChoice.textContent !=questions[questionsListEl].answer) {
+    // take time away
+    time -= 20;
