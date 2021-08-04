@@ -43,12 +43,12 @@ myChoicesEl.removeChild(myChoicesEl.lastChild);
 
     // Loop over selected choices
 
-    for (var i=0; i <currentQuestion.myChoicesEl.length; i++) {
+    for (var i=0; i <myQuestions.myChoicesEl.length; i++) {
     }
 
     //    creating new buttons for each choice
         var choiceButton = document.createElement("button");
-        choiceButton.textContent = currentQuestion.choices[i];
+        choiceButton.textContent = myQuestions.choices[i];
 
         // Place display on page
         myChoicesEl.appendChild(choiceButton);
