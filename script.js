@@ -1,6 +1,6 @@
 // List of my variables
 var myQuestions = 0;
-var time = questions.length * git 30;
+var time = questions.length * 30;
 var timerLock;
 
 
@@ -9,10 +9,10 @@ var timerLock;
 var questionsListEl= document.getElementById("my-questions");
 var myTimerEl= document.getElementById("time");
 var myChoicesEl = document.getElementById("choices");
-var MySubmitBtn = document.getElementById("submit");
-var MyInitalsEl = document.getElementById("names-initals");
+var mySubmitBtn = document.getElementById("submit");
+var myInitalsEl = document.getElementById("names-initals");
 var startBtn = document.getElementById("start");
-var MyFeedbackEl = document.getElementById("feedback");
+var myFeedbackEl = document.getElementById("feedback");
 
 function startQuiz () {
     console.log (time)
@@ -38,7 +38,7 @@ getQuestion ();
 function getQuestion() {
 }
     var questions = questions[myQuestions];
-    questionsListEl.children[0].textContent = currentQuestion.title;
+    questionsListEl.children[0].textContent = myQuestions.title;
     while (myChoicesEl.hasChildNodes()) {
     }
         myChoicesEl.removeChild(myChoicesEl.lastChild);
@@ -120,13 +120,13 @@ function quizEnd() {
  finalScoreEl.textContent = time;
 
  // hide questions 
- questionsEl.setAttribute("class", "hide");
+ myquestionsEl.setAttribute("class", "hide");
 }
 
 function clockTick() {
  // update the time
  time--;
- timerEl.textContent = time;
+ myTimerEl.textContent = time;
 
  // check if user ran out of time during quiz
  if(time <= 0)
@@ -171,9 +171,9 @@ function checkForEnter(event) {
 }
 
 // user clicks button to submit initials
-submitBtn.onclick = saveHighscore;
+mySubmitBtn.onclick = saveHighscore;
 
 // user clicks button to start quiz
-startBtn.onclick = startQuiz;
+myStartBtn.onclick = startQuiz;
 
-initialsEl.onkeyup = checkForEnter;
+myInitialsEl.onkeyup = checkForEnter;
