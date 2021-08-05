@@ -11,22 +11,27 @@ var TimerEl= document.getElementById("time");
 var ChoicesEl = document.getElementById("choices");
 var SubmitBtn = document.getElementById("submit");
 var InitalsEl = document.getElementById("initals");
-var StartBtn = document.getElementById("start-on");
+var startBtn = document.getElementById("start");
 var FeedbackEl = document.getElementById("feedback");
 
 function startQuiz () {
 
-    var startScreenEl = document.getElementById("start-screen");
-    startScreenEl.setAttribute("class", "hide");
+       var startScreenEl = document.getElementById("start-screen");
+       startScreenEl.setAttribute("class", "hide");
+   
+       questionsEl.removeAttribute("class");
+   
+       timerId = setInterval(clockTick, 1000);
+   
+       TimerEl.textContent = time;
+   
+       getQuestion();
+   }
+   
+   startBtn.addEventListener("click", startQuiz) 
 
-    questionsEl.removeAttribute("class");
 
-    timerId = setInterval(clockTick, 1000);
 
-    TimerEl.textContent = time;
-
-    getQuestion();
-}
 
 function getQuestion () {
     // grabbing the 1st question out of the array we've built"
@@ -138,8 +143,7 @@ function checkForEnter(event) {
 
 // user clicks button to submit initials
 SubmitBtn.onclick = saveHighscore;
-
-
+startBtn.onclick = startQuiz;
 InitialsEl.onkeyup = checkForEnter;
 
 }
