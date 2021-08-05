@@ -1,127 +1,105 @@
 // List of my variables
-var currentQuestion = 0
+var currentQuestionindex = 0
 var time = questions.length * 100;
-var timerLock;
+var timerId;
 
 
 
 //  My references for all of my DOM elements for the page
-var questionsListEl= document.getElementById("my-questions");
-var myTimerEl= document.getElementById("time");
-var myChoicesEl = document.getElementById("choices");
-var mySubmitBtn = document.getElementById("submit");
-var myInitalsEl = document.getElementById("names-initals");
-var myStartBtn = document.getElementById("start-on");
-var myFeedbackEl = document.getElementById("feedback");
+var questionsEl= document.getElementById("questions");
+var TimerEl= document.getElementById("time");
+var ChoicesEl = document.getElementById("choices");
+var SubmitBtn = document.getElementById("submit");
+var InitalsEl = document.getElementById("initals");
+var StartBtn = document.getElementById("start-on");
+var FeedbackEl = document.getElementById("feedback");
 
 function startQuiz () {
-    console.log (time)
-    // Start screen should be hidden before the clock officially starts
 
-var readyScreen = document.getElementById("start-up");
-readyScreen.setAttribute("class", "start hide"); }
-myStartBtn.onclick = startQuiz;
-// Reveal questions
-questionsListEl.setAttribute("class", " ");
-// start of timer
-timerLock= setInterval(function(){
-    clockTick();
-}, 1000);
+    var startScreenEl = document.getElementById("start-screen");
+    startScreenEl.setAttribute("class", "hide");
 
-// show start time
-myTimerEl.textContent = time;
-console.log (time)
+    questionsEl.removeAttribute("class");
 
+    timerId = setInterval(clockTick, 1000);
 
-questionsListEl.children[0].textContent = myQuestions.title;
-while (myChoicesEl.hasChildNodes()) {
-myChoicesEl.removeChild(myChoicesEl.lastChild);
+    TimerEl.textContent = time;
+
+    getQuestion();
 }
+
+function getQuestion () {
+    // grabbing the 1st question out of the array we've built"
+    var currentQuestion = questions [currentQuestionindex];
+
+    // update front title page with 1st question on the quiz
+    var titleEl = document.getElementById("question-title");
+    titleEl.textContent = currentQuestion.title;
+
+    // clears out the old questions.
+    ChoicesEl.innerHTML = "";
+
+    // for loop we've created
+    currentQuestion.choices.forEach(function(choice, i)
+     {
+
+    var choiceNode = document.createElement("button");
+    choiceNode.setAttribute("class", "choice");
+    choiceNode.setAttribute("value", "choice");
+ 
+    choiceNode.textContent = i + 1 +". " + choice;
+ 
+    choiceNode.onclick = questionClick;
+ 
+    ChoicesEl.appendChild(choiceNode);
+
+    });
+}
+
+function questionClick () {
+if (this.value !== questions[currentQuestionindex].answer); {
+//  subtract time
+    time-= 15;
+
+    if (time < 0) {
+        time = 0;
+    }
     
-    // Loop over selected choices
+    // new time should show up on page
+    TimerEl.textContent = time;
 
-    for (var i=0; i <questions[currentQuestion].choices.length; i++) {
-    //    creating new buttons for each choice
-        // Adding event listeners to each choice
-        myChoicesEl.children[0].addEventListener("click", function(event) {
-            questionsClick(myChoicesEl.children[0]);
-            });
-            myChoicesEl.children[1].addEventListener("click", function(event) {
-             questionsClick(myChoicesEl.children[1]);
-            });
-            myChoicesEl.children[2].addEventListener("click", function(event) {
-            questionsClick(myChoicesEl.children[2]);
-            });
-            myChoicesEl.children[3].addEventListener("click", function(event) {
-            questionsClick(myChoicesEl.children[3]);
-           
-        });
-    var choiceButton = document.createElement("button");
-    choiceButton.textContent = myQuestions.choices[i];
-      // Place display on page
-     myChoicesEl.appendChild(choiceButton);
+    // next question
+    currentQuestionindex++;
 
-    }
-function questionsClick(answerChoice) {
-    if (answerChoice.textContent != questions[myQuestions].answer){
-// penalize time
-    time-=10;
-// display new time on page (should work)
-    MyFeedbackEl.textContent = "Incorrect";
-    }
-
-    else {
-        MyFeedbackEl.textContent= "Correct";
+    if (currentQuestionindex === questions.length) {
+        quizEnd();
+    } else {
+        getQuestion ();
     }
 }
 
- // flash right/wrong feedback on page 
- myFeedbackEl.setAttribute("class", "feedback");
- setInterval(function(){
-   myFeedbackEl.setAttribute("class", "feedback hide");
- }, 1000);
+        function quizEnd () {
+    clearInterval(timerId);
 
- // move to next question
- myQuestions++;
+var endScreenEl = document.getElementById("end-screen");
+endScreenEl.removeAttribute("class");
 
- // check to see if we've run out of questions
- if(myQuestions === questions.length)
-   // quizEnd
-   quizEnd();
- // else 
- else
-   // getQuestion
-   getQuestion();
+var finalScoreEl = document.getElementById("final-score");
+finalScoreEl.textContent= time;
 
-
-function quizEnd() {
- // stop timer
- clearInterval(mytimerLock);
- myTimerEl.textContent = time;
-
- // show end screen
- var endScreenEl = document.getElementById("end-screen");
- endScreenEl.setAttribute("class", " ");
-
- // show final score when complete
- var finalScoreEl = document.getElementById("final-score");
- finalScoreEl.textContent = time;
-
- // hide questions 
- myQuestionsEl.setAttribute("class", "hide");
+    questionsEl.setAttribute("class", "hide");
 }
 
 function clockTick() {
- // update the time
- time--;
- myTimerEl.textContent = time;
+// modifed time
+time --;
+TimerEl.textContent = time;
 
- // check if user ran out of time during quiz
- if(time <= 0)
-   quizEnd();
- 
+if (time <= 0) {
+    quizEnd();
 }
 
+}
 function saveScores () {
     var namesIntials = namesInitals.value.toUpperCase ();
     if (namesInitals === "") {
@@ -159,7 +137,9 @@ function checkForEnter(event) {
 }
 
 // user clicks button to submit initials
-mySubmitBtn.onclick = saveHighscore;
+SubmitBtn.onclick = saveHighscore;
 
 
-myInitialsEl.onkeyup = checkForEnter;
+InitialsEl.onkeyup = checkForEnter;
+
+}
