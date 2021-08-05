@@ -1,6 +1,6 @@
 // List of my variables
-var myQuestions = 0;
-var time = questions.length * 30;
+var currentQuestion = 0
+var time = questions.length * 100;
 var timerLock;
 
 
@@ -30,7 +30,6 @@ timerLock= setInterval(function(){
 
 // show start time
 myTimerEl.textContent = time;
-
 console.log (time)
 
 
@@ -39,37 +38,30 @@ while (myChoicesEl.hasChildNodes()) {
 myChoicesEl.removeChild(myChoicesEl.lastChild);
 }
     
-
-
     // Loop over selected choices
 
-    for (var i=0; i <questionsListEl.myChoicesEl.length; i++) {
-    }
-
+    for (var i=0; i <questions[currentQuestion].choices.length; i++) {
     //    creating new buttons for each choice
-        var choiceButton = document.createElement("button");
-        choiceButton.textContent = myQuestions.choices[i];
+        // Adding event listeners to each choice
+        myChoicesEl.children[0].addEventListener("click", function(event) {
+            questionsClick(myChoicesEl.children[0]);
+            });
+            myChoicesEl.children[1].addEventListener("click", function(event) {
+             questionsClick(myChoicesEl.children[1]);
+            });
+            myChoicesEl.children[2].addEventListener("click", function(event) {
+            questionsClick(myChoicesEl.children[2]);
+            });
+            myChoicesEl.children[3].addEventListener("click", function(event) {
+            questionsClick(myChoicesEl.children[3]);
+           
+        });
+    var choiceButton = document.createElement("button");
+    choiceButton.textContent = myQuestions.choices[i];
+      // Place display on page
+     myChoicesEl.appendChild(choiceButton);
 
-        // Place display on page
-        myChoicesEl.appendChild(choiceButton);
-
-
-
-    // Adding event listeners to each choice
-    myChoicesEl.children[0].addEventListener("click", function(event) {
-    questionsClick(myChoicesEl.children[0]);
-    });
-    myChoicesEl.children[1].addEventListener("click", function(event) {
-     questionsClick(myChoicesEl.children[1]);
-    });
-    myChoicesEl.children[2].addEventListener("click", function(event) {
-    questionsClick(myChoicesEl.children[2]);
-    });
-    myChoicesEl.children[3].addEventListener("click", function(event) {
-    questionsClick(myChoicesEl.children[3]);
-   
-});
-
+    }
 function questionsClick(answerChoice) {
     if (answerChoice.textContent != questions[myQuestions].answer){
 // penalize time
