@@ -1,10 +1,10 @@
-var allscores = JSON.parse(localStorage.getItem("highscores"));
+var highscores = JSON.parse(localStorage.getItem("highscores"));
 var scorelist = document.getElementById("scoring");
 
 for (let index = 0; index < highscores.length; index++) {
-    var newestlist = document.createElement("list")
+    var newli = document.createElement("li")
     newestlist.textContent=highscores[index].initals+" - " + highscores[index].score
-    scorelist.appendChild(newestlist)
+    scorelist.appendChild(newli)
 }
 
 function clearHighscores () {
@@ -12,5 +12,5 @@ function clearHighscores () {
     location.reload ();
 }
 
-var deleteeverythingButton = document.getElementById("clearBtn");
-deleteeverythingButton.addEventListener("click", clearHighscores);
+var clearButton = document.getElementById("clearBtn");
+clearButton.addEventListener("click", clearHighscores);
