@@ -113,7 +113,8 @@ function saveScores () {
     }
     else if (initals.length > 3){
         alert("Input has to be less than 10 characters");
-        return;
+        return; 
+    }
 
     // get saved scores from localstorage, or if not any, set to empty array
     var highscores;
@@ -132,7 +133,7 @@ function saveScores () {
     // redirect to next page
     location.href = "savedscores.html";
   }
-}
+
 
 function checkForEnter(event) {
   // check if event key is enter
