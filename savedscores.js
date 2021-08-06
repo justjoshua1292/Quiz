@@ -1,10 +1,10 @@
 var highscores = JSON.parse(localStorage.getItem("highscores"));
-var scorelist = document.getElementById("scoring");
+var scorelistol = document.getElementById("scoring");
 
 for (let index = 0; index < highscores.length; index++) {
     var newli = document.createElement("li")
-    newestlist.textContent=highscores[index].initals+" - " + highscores[index].score
-    scorelist.appendChild(newli)
+    newli.textContent=highscores[index].initals+" - " + highscores[index].score
+    scorelistol.appendChild(newli)
 }
 
 function clearHighscores () {

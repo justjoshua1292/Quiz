@@ -3,6 +3,7 @@ var currentQuestionindex = 0
 var time = questions.length * 100;
 var timerId;
 
+var highscores = JSON.parse(localStorage.getItem('highscores')) || []
 
 
 //  My references for all of my DOM elements for the page
@@ -124,7 +125,7 @@ function saveScores () {
       highscores = [];
     // format new score object for current user
     var newestScores = {
-      initials: initials,
+      initals: initals,
       score: time
     };
     highscores.push(initals);
