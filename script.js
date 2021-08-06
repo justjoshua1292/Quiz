@@ -10,7 +10,7 @@ var questionsEl= document.getElementById("questions");
 var TimerEl= document.getElementById("time");
 var ChoicesEl = document.getElementById("choices");
 var submitBtn = document.getElementById("submit");
-var InitalsEl = document.getElementById("initals");
+var initalsEl = document.getElementById("initals");
 var startBtn = document.getElementById("start");
 var FeedbackEl = document.getElementById("feedback");
 
@@ -21,9 +21,9 @@ function startQuiz () {
    
        questionsEl.removeAttribute("class");
    
-    //    timerId = setInterval(clockTick, 1000);
+       timerId = setInterval(clockTick, 1000);
    
-    //    TimerEl.textContent = time;
+       TimerEl.textContent = time;
    
        getQuestion();
    }
@@ -82,7 +82,7 @@ if (this.value !== questions[currentQuestionindex].answer); {
         getQuestion ();
     }
 }
-
+}
         function quizEnd () {
     clearInterval(timerId);
 
@@ -106,12 +106,12 @@ if (time <= 0) {
 
 }
 function saveScores () {
-    var namesIntials = namesInitals.value.toUpperCase ();
-    if (namesInitals === "") {
+    var initals = initalsEl.value.toUpperCase ();
+    if (initals === "") {
         alert("Blank input not allowed");
         return;
     }
-    else if (namesInitals.length > 3){
+    else if (initals.length > 3){
         alert("Input has to be less than 10 characters");
         return;
 
@@ -126,7 +126,7 @@ function saveScores () {
       initials: initials,
       score: time
     };
-    highscores.push(newestScores);
+    highscores.push(initals);
     // save to localstorage
     localStorage.setItem("highscores", JSON.stringify(highscores));
     // redirect to next page
@@ -142,10 +142,10 @@ function checkForEnter(event) {
 }
 
 // user clicks button to submit initials
-submitBtn.onclick = saveHighscore;
+submitBtn.onclick = saveScores;
 startBtn.onclick = startQuiz;
-InitialsEl.onkeyup = checkForEnter;
 
-}
+
+
 
 startBtn.addEventListener("click", startQuiz) 
