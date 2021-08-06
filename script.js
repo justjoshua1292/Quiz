@@ -124,11 +124,12 @@ function saveScores () {
     else
       highscores = [];
     // format new score object for current user
+    console.log({initals, time})
     var newestScores = {
       initals: initals,
       score: time
     };
-    highscores.push(initals);
+    highscores.push(newestScores);
     // save to localstorage
     localStorage.setItem("highscores", JSON.stringify(highscores));
     // redirect to next page
@@ -151,3 +152,4 @@ startBtn.onclick = startQuiz;
 
 
 startBtn.addEventListener("click", startQuiz) 
+initalsEl.onkeyup = checkForEnter;
