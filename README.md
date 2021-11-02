@@ -1,2 +1,2 @@
 # Quiz
-Another Quiz
+Code-Quiz

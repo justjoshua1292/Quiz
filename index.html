@@ -4,43 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 💻A Quiz💻 </title>
-    <link rel ="stylesheet" href="./style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="myscores"> <a href ="savedscores.html"> Highscores </a> </div>
-    
-    <div class ="timer-running" > Time: <span id="time"> 0 </span> </div> 
-    
-    <div class="wrapper">
-        <div id="start-screen" class="start">
-            <h1>A Quiz </h1>
-                <p>
-                Prime objective: Answer the questions as best as you can during the alloted time limit. 
-                All INCORRECT answers will knock MAJOR time off your score! Good luck! Can you complete this quiz!??
-                </p>
-                <button id="start" > Start Quiz </button>
-                </div>
+    <header>
+        <a href="./highscores.html">Highscores</a>
+        <h3 id="time-h3">Time: <span id="time-span">0</span></h3>
+    </header>
 
-                <div id="questions" class="hide">
-                    <h3 id="question-title"> </h3>
-                    <div id="choices" class="choices"> </div>
-                </div>
+    <div id="welcome-div">
+        <h1>Welcome to the Quiz!</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam animi qui ipsam, assumenda pariatur, molestias temporibus iusto officia sunt est laudantium provident sapiente nesciunt nostrum eum tempore libero culpa cum!</p>
+        <button id="quiz-button">Start Quiz</button>
+    </div>
 
-                <div id="end-screen" class="hide">
-                    <h2>Game Over!</h2>
-                    <p>Final Score: <span id="final-score"></span>.</p>
-                    <p>
-                    Enter your name or initals: <input type="text" id="initals" max="10"/>
-                    <button id="submit"> Click here to submit! </button>
-                     </p>
-                    </div>
+    <div id="question-div">
+        <h2 id="question-h2">This is where you put in the question text!</h2>
+        <button id="option1-button">Option1</button>
+        <button id="option2-button">Option2</button>
+        <button id="option3-button">Option3</button>
+        <button id="option4-button">Option4</button>
+    </div>
 
-                 <div id="feedback" class="feedback-hide">
-        </div>
+    <div id="highscore-table-div">
+        <h2>Your score: <span id="score-span">0</span></h2>
+        <input id="initials-input" type="text"/ placeholder="Enter your initials here">
+        <button id="submit-button" onclick="saveScore()">Submit</button>
+    </div>
 
-    <script src="./quizdocumentation.js"></script>
-    <script src="./script.js"></script>
 
+
+    <script src="script.js"></script>
 </body>
 </html>

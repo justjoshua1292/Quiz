@@ -1,155 +1,151 @@
-// List of my variables
-var currentQuestionindex = 0
-var time = questions.length * 100;
-var timerId;
+var quizButton = document.querySelector('#quiz-button');
 
-var highscores = JSON.parse(localStorage.getItem('highscores')) || []
+var myQuestions = [
+    {
+        questionText: "What is 1+1=?",
+        options: [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        correctAnswer: "2"
+    },
+    {
+        questionText: "What is 2+5=?",
+        options: [
+            "7",
+            "8",
+            "9",
+            "10"
+        ],
+        correctAnswer: "7"
+    },
+    {
+        questionText: "What is 5+5=?",
+        options: [
+            "10",
+            "7",
+            "8",
+            "9"
+        ],
+        correctAnswer: "10"
+    },
+    {
+        questionText: "What is 5+5=?",
+        options: [
+            "10",
+            "7",
+            "8",
+            "9"
+        ],
+        correctAnswer: "10"
+    },
+    {
+        questionText: "What is 5+5=?",
+        options: [
+            "10",
+            "7",
+            "8",
+            "9"
+        ],
+        correctAnswer: "10"
+    }
+
+]
+
+var questionChoicesIndex = 0;
+var time = myQuestions.length * 100;
+var myTimer;
+
+// myQuestions[0].options[1]
 
 
-//  My references for all of my DOM elements for the page
-var questionsEl= document.getElementById("questions");
-var TimerEl= document.getElementById("time");
-var ChoicesEl = document.getElementById("choices");
-var submitBtn = document.getElementById("submit");
-var initalsEl = document.getElementById("initals");
-var startBtn = document.getElementById("start");
-var FeedbackEl = document.getElementById("feedback");
+function beginQuiz () {
+    // var welcomeDiv = document.querySelector("#welcome-div");
+    var welcomeDiv = document.getElementById("welcome-div")
 
-function startQuiz () {
+    welcomeDiv.style.display = "none";
 
-       var startScreenEl = document.getElementById("start-screen");
-       startScreenEl.setAttribute("class", "hide");
-   
-       questionsEl.removeAttribute("class");
-   
-       timerId = setInterval(clockTick, 1000);
-   
-       TimerEl.textContent = time;
-   
-       getQuestion();
-   }
-   
-//    startBtn.addEventListener("click", startQuiz) 
+    var questionDiv = document.getElementById("question-div");
 
+    questionDiv.style.display = "block";
 
+    myTimer = setInterval(function() {
+        time--;
+        var timeSpan = document.getElementById("time-span");
+        timeSpan.textContent = time;
+    }, 1000);
 
-
-function getQuestion () {
-    // grabbing the 1st question out of the array we've built"
-    var currentQuestion = questions [currentQuestionindex];
-
-    // update front title page with 1st question on the quiz
-    var titleEl = document.getElementById("question-title");
-    titleEl.textContent = currentQuestion.title;
-
-    // clears out the old questions.
-    ChoicesEl.innerHTML = "";
-
-    // for loop we've created
-    currentQuestion.choices.forEach(function(choice, i)
-     {
-
-    var choiceNode = document.createElement("button");
-    choiceNode.setAttribute("class", "choice");
-    choiceNode.setAttribute("value", "choice");
- 
-    choiceNode.textContent = i + 1 +". " + choice;
- 
-    choiceNode.onclick = questionClick;
- 
-    ChoicesEl.appendChild(choiceNode);
-
-    });
+    changeQuestion();
 }
 
-function questionClick () {
-if (this.value !== questions[currentQuestionindex].answer); {
-//  subtract time
-    time-= 15;
+function checkAnswer () {
+    if (this.textContent !== myQuestions[questionChoicesIndex-1].correctAnswer) {
+    //  subtract time
+        time-= 15;
+    
+        if (time < 0) {
+            time = 0;
+        }
+    }
 
-    if (time < 0) {
-        time = 0;
+    changeQuestion()
+}
+
+function changeQuestion () {
+    if(questionChoicesIndex < myQuestions.length) {
+        var questionH2 = document.getElementById("question-h2")
+        var option1Button = document.getElementById("option1-button")
+        var option2Button = document.getElementById("option2-button")
+        var option3Button = document.getElementById("option3-button")
+        var option4Button = document.getElementById("option4-button")
+        
+        questionH2.textContent = myQuestions[questionChoicesIndex].questionText;
+    
+        option1Button.textContent =  myQuestions[questionChoicesIndex].options[0];
+        option2Button.textContent =  myQuestions[questionChoicesIndex].options[1];
+        option3Button.textContent =  myQuestions[questionChoicesIndex].options[2];
+        option4Button.textContent =  myQuestions[questionChoicesIndex].options[3];
+    
+        option1Button.addEventListener("click", checkAnswer);
+        option2Button.addEventListener("click", checkAnswer);
+        option3Button.addEventListener("click", checkAnswer);
+        option4Button.addEventListener("click", checkAnswer);
+    
+        questionChoicesIndex++;
+    } else {
+        // when the quiz ends
+        alert("You finished the quiz!")
+        clearInterval(myTimer);
+
+        var timeH3 = document.getElementById("time-h3");
+        timeH3.style.display = "none";
+
+        var questionDiv = document.getElementById("question-div");
+        questionDiv.style.display = "none";
+
+        var highscoreDiv = document.getElementById("highscore-table-div");
+        highscoreDiv.style
+        .display = "block";
+
+        var scoreSpan = document.getElementById("score-span");
+        scoreSpan.textContent = time;
     }
     
-    // new time should show up on page
-    TimerEl.textContent = time;
-
-    // next question
-    currentQuestionindex++;
-
-    if (currentQuestionindex === questions.length) {
-        quizEnd();
-    } else {
-        getQuestion ();
-    }
-}
-}
-        function quizEnd () {
-    clearInterval(timerId);
-
-var endScreenEl = document.getElementById("end-screen");
-endScreenEl.removeAttribute("class");
-
-var finalScoreEl = document.getElementById("final-score");
-finalScoreEl.textContent= time;
-
-    questionsEl.setAttribute("class", "hide");
 }
 
-function clockTick() {
-// modifed time
-time --;
-TimerEl.textContent = time;
+function saveScore() {
+    var score = time;
+    var initials = document.getElementById("initials-input").value;
 
-if (time <= 0) {
-    quizEnd();
+    alert(`Your score: ${score}. Thanks for taking the quiz, ${initials}!`)
+
+    localStorage.setItem("score", JSON.stringify({
+        score: score,
+        initials: initials
+    }))
 }
 
-}
-function saveScores () {
-    var initals = initalsEl.value.toUpperCase ();
-    if (initals === "") {
-        alert("Blank input not allowed");
-        return;
-    }
-    else if (initals.length > 3){
-        alert("Input has to be less than 10 characters");
-        return; 
-    }
+quizButton.addEventListener("click", beginQuiz)
 
-    // get saved scores from localstorage, or if not any, set to empty array
-    var highscores;
-    if(JSON.parse(localStorage.getItem("highscores")) != null)
-      highscores = JSON.parse(window.localStorage.getItem("highscores"));
-    else
-      highscores = [];
-    // format new score object for current user
-    console.log({initals, time})
-    var newestScores = {
-      initals: initals,
-      score: time
-    };
-    highscores.push(newestScores);
-    // save to localstorage
-    localStorage.setItem("highscores", JSON.stringify(highscores));
-    // redirect to next page
-    location.href = "savedscores.html";
-  }
-
-
-function checkForEnter(event) {
-  // check if event key is enter
-    // saveHighscore
-    if(event.keyCode === 13)
-      saveHighscore();
-}
-
-// user clicks button to submit initials
-submitBtn.onclick = saveScores;
-startBtn.onclick = startQuiz;
-
-
-
-
-startBtn.addEventListener("click", startQuiz) 
-initalsEl.onkeyup = checkForEnter;
