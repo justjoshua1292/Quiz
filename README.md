@@ -23,14 +23,13 @@ Here's some screenshots of the new quiz :
 
 
 
-![Screenshot (206)](https://user-images.githubusercontent.com/83887301/128448320-198da9ae-e94e-4702-a7ba-da438f36b9b1.png)
-![Screenshot (207)](https://user-images.githubusercontent.com/83887301/128448364-3709efc6-9598-4e49-837c-fbd1361c5991.png)
-![Screenshot (208)](https://user-images.githubusercontent.com/83887301/128448433-3f8455e5-77a9-4d3f-a8e2-e8bf45e91e6d.png)
-
-
 
 
 
 
 
 https://justjoshua1292.github.io/Quiz/
+![Screenshot (370)](https://user-images.githubusercontent.com/83887301/139912837-94b02ef2-9259-4a13-9d19-807bbc9bf0a2.png)
+![Screenshot (371)](https://user-images.githubusercontent.com/83887301/139912839-272e6d87-528e-461e-9497-b5065f207a83.png)
+![Screenshot (372)](https://user-images.githubusercontent.com/83887301/139912840-101627eb-ac97-4024-86ea-35b7f16148ad.png)
+![Screenshot (373)](https://user-images.githubusercontent.com/83887301/139912841-f47876c9-0a3f-4db5-90fe-8cf195cd80d1.png)
