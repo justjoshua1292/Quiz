@@ -1,11 +1,57 @@
+* {
+    background-color: burlywood;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 125%
+}
 #welcome-div {
     display: block;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%
 }
 
 #question-div {
     display: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%
 }
 
 #highscore-table-div {
     display: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%
+}
+
+#question-h2 {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%
+}
+
+#option1-button {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%
+}
+
+#option2-button {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%
+}
+
+#option3-button {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%
+}
+
+#option4-button {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%
+}
+
+#initials-input {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%
+}
+
+.submit-button {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 80%
 }

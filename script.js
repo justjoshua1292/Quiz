@@ -2,54 +2,54 @@ var quizButton = document.querySelector('#quiz-button');
 
 var myQuestions = [
     {
-        questionText: "What is 1+1=?",
+        questionText: "Choose the correct HTML tag to ensure that your text is bold",
         options: [
-            "1",
-            "2",
-            "3",
-            "4"
+            "bold",
+            "b",
+            "baby",
+            "underline"
         ],
-        correctAnswer: "2"
+        correctAnswer: "b"
     },
     {
-        questionText: "What is 2+5=?",
+        questionText: "How do you insert a comment in any CSS file?",
         options: [
-            "7",
-            "8",
-            "9",
-            "10"
+            "blah",
+            "//*this is a comment */",
+            "Just write a comment",
+            "//..."
         ],
-        correctAnswer: "7"
+        correctAnswer: "//*this is a comment*//"
     },
     {
-        questionText: "What is 5+5=?",
+        questionText: "What does JS stand for?",
         options: [
-            "10",
-            "7",
-            "8",
-            "9"
+            "JavaSTANd",
+            "JavaScript",
+            "JavaStick",
+            "JavaSpoon"
         ],
-        correctAnswer: "10"
+        correctAnswer: "JavaScript"
     },
     {
-        questionText: "What is 5+5=?",
+        questionText: "What property is used to change the background color?",
         options: [
-            "10",
-            "7",
-            "8",
-            "9"
+            "bg-color",
+            "new-color",
+            "my-color",
+            "background-color"
         ],
-        correctAnswer: "10"
+        correctAnswer: "background-color"
     },
     {
-        questionText: "What is 5+5=?",
+        questionText: "HTML stands for what?",
         options: [
-            "10",
-            "7",
-            "8",
-            "9"
+            "Hit my line",
+            "HyperText Markup Language",
+            "HyperToken Markup Language",
+            "HyperText Machine Language",
         ],
-        correctAnswer: "10"
+        correctAnswer: "HyperText Markup Language"
     }
 
 ]
@@ -107,11 +107,13 @@ function changeQuestion () {
         option2Button.textContent =  myQuestions[questionChoicesIndex].options[1];
         option3Button.textContent =  myQuestions[questionChoicesIndex].options[2];
         option4Button.textContent =  myQuestions[questionChoicesIndex].options[3];
+
     
         option1Button.addEventListener("click", checkAnswer);
         option2Button.addEventListener("click", checkAnswer);
         option3Button.addEventListener("click", checkAnswer);
         option4Button.addEventListener("click", checkAnswer);
+        
     
         questionChoicesIndex++;
     } else {
