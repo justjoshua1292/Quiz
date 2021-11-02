@@ -6,52 +6,62 @@
 #welcome-div {
     display: block;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 80%
+    font-size: 85%
 }
 
 #question-div {
     display: none;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 80%
+    font-size: 95%
 }
 
 #highscore-table-div {
     display: none;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 80%
+    font-size: 50%
 }
 
 #question-h2 {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 80%
+    font-size: 90%
 }
 
 #option1-button {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 80%
+    font-size: 85%
 }
 
 #option2-button {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 80%
+    font-size: 85%
 }
 
 #option3-button {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 80%
+    font-size: 85%
 }
 
 #option4-button {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 80%
+    font-size: 85%
 }
 
 #initials-input {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 80%
+    font-size: 85%
 }
 
 .submit-button {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 80%
+    font-size: 65%
+}
+
+#time-h3 {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 65%
+}
+
+#time-span {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 65%
 }
